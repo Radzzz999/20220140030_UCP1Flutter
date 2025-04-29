@@ -107,7 +107,7 @@ class DetailPelangganPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()), // Ganti dengan halaman Home-mu
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (route) => false,
                 );
               },

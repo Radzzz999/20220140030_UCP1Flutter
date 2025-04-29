@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ucp1/detail_piket';
+import 'package:ucp1/detail_piket.dart';
 
 class PiketGudangPage extends StatefulWidget {
   const PiketGudangPage({Key? key}) : super(key: key);

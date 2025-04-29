@@ -87,4 +87,73 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
               ),
               const SizedBox(height: 15),
 
-              
+              DropdownButtonFormField<String>(
+                value: jenisTransaksi,
+                decoration: inputStyle('Jenis Transaksi'),
+                items: ['Beli', 'Jual'].map((item) {
+                  return DropdownMenuItem(value: item, child: Text(item));
+                }).toList(),
+                onChanged: (val) => setState(() => jenisTransaksi = val),
+                validator: (value) => value == null ? 'Pilih jenis transaksi' : null,
+              ),
+              const SizedBox(height: 15),
+
+              DropdownButtonFormField<String>(
+                value: jenisBarang,
+                decoration: inputStyle('Jenis Barang'),
+                items: ['Makanan', 'Minuman', 'Lainnya'].map((item) {
+                  return DropdownMenuItem(value: item, child: Text(item));
+                }).toList(),
+                onChanged: (val) {
+                  setState(() {
+                    jenisBarang = val;
+                    if (val != null && hargaBarang.containsKey(val)) {
+                      _hargaController.text = hargaBarang[val]!.toString();
+                    }
+                  });
+                },
+                validator: (value) => value == null ? 'Pilih jenis barang' : null,
+              ),
+              const SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Jumlah Barang'),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: _jumlahController,
+                          keyboardType: TextInputType.number,
+                          decoration: inputStyle('Jumlah Barang'),
+                          validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Harga Satuan'),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: _hargaController,
+                          readOnly: true,
+                          keyboardType: TextInputType.number,
+                          decoration: inputStyle('Harga Satuan').copyWith(
+                            prefixText: 'Rp. ',
+                          ),
+                          validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+
+             

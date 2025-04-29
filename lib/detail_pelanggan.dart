@@ -96,4 +96,27 @@ class DetailPelangganPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-            
+            SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[700],
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              ),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()), // Ganti dengan halaman Home-mu
+                  (route) => false,
+                );
+              },
+              child: const Text('Selesai', style: TextStyle(fontSize: 16)),
+            ),
+          ),
+          ],
+        ),
+      ),
+    );
+  }
+}

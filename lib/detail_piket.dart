@@ -66,4 +66,16 @@ class DetailPiketPage extends StatelessWidget {
     );
   }
 
-  
+  String _formatHari(DateTime date) {
+    List<String> hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+    return hari[date.weekday - 1];
+  }
+
+  String _formatBulan(int month) {
+    List<String> bulan = [
+      'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+      'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
+    return bulan[month - 1];
+  }
+}

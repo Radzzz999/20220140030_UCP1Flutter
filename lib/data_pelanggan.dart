@@ -98,4 +98,97 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
               ),
               const SizedBox(height: 15),
 
-              
+              const Text('Alamat', style: TextStyle(fontWeight: FontWeight.bold)),
+              const SizedBox(height: 5),
+              TextFormField(
+                controller: alamatController,
+                decoration: inputDecoration.copyWith(hintText: 'Alamat'),
+                validator: (value) => value == null || value.isEmpty ? 'Alamat tidak boleh kosong' : null,
+              ),
+              const SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Provinsi', style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: provinsiController,
+                          decoration: inputDecoration.copyWith(hintText: 'Provinsi'),
+                          validator: (value) => value == null || value.isEmpty ? 'Provinsi tidak boleh kosong' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Kode Pos', style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: kodePosController,
+                          decoration: inputDecoration.copyWith(hintText: 'Kode Pos'),
+                          validator: (value) => value == null || value.isEmpty ? 'Kode Pos tidak boleh kosong' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red[700],
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPelangganPage(
+                          nama: namaController.text,
+                          email: emailController.text,
+                          noHp: noHpController.text,
+                          alamat: alamatController.text,
+                          provinsi: provinsiController.text,
+                          kodePos: kodePosController.text,
+                        ),
+                      ),
+                    );
+                  }
+                },
+                child: const Text('Simpan', style: TextStyle(fontSize: 16)),
+              ),
+              const SizedBox(height: 15),
+
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Colors.red),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                ),
+                onPressed: () {
+                  namaController.clear();
+                  emailController.clear();
+                  noHpController.clear();
+                  alamatController.clear();
+                  provinsiController.clear();
+                  kodePosController.clear();
+                },
+                child: const Text('Reset', style: TextStyle(color: Colors.red, fontSize: 16)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

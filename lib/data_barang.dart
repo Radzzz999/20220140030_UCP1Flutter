@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ucp1/suscces_page.dart';
+import 'package:ucp1/detail_barang.dart';
 
 class PendataanBarangPage extends StatefulWidget {
   const PendataanBarangPage({super.key});

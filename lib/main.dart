@@ -3,6 +3,7 @@ import 'package:ucp1/data_barang.dart';
 import 'package:ucp1/data_pelanggan.dart';
 import 'package:ucp1/data_piket.dart';
 import 'package:ucp1/home.dart';
+import 'package:ucp1/login.dart';
 import 'package:ucp1/register.dart';
 
 void main() {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
+        '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/home': (context) => const HomePage(),
         '/piket': (context) => const PiketGudangPage(),

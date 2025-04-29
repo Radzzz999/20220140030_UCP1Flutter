@@ -63,4 +63,37 @@ class DetailPelangganPage extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Provinsi', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 5),
+                      TextField(
+                        decoration: inputDecoration.copyWith(hintText: provinsi),
+                        readOnly: true,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Kode Pos', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 5),
+                      TextField(
+                        decoration: inputDecoration.copyWith(hintText: kodePos),
+                        readOnly: true,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+
             

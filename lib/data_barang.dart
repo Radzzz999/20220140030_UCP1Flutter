@@ -156,4 +156,39 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
               ),
               const SizedBox(height: 30),
 
-             
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SuccessPage(
+                            tanggal: _tanggalController.text,
+                            jenisTransaksi: jenisTransaksi!,
+                            jenisBarang: jenisBarang!,
+                            jumlahBarang: int.parse(_jumlahController.text),
+                            hargaSatuan: int.parse(_hargaController.text),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Submit'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

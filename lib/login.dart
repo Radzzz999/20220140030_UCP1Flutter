@@ -69,4 +69,122 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 40),
 
                   
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.email_outlined, color: Colors.brown),
+                          hintText: 'Email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Email tidak boleh kosong';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 20),
+
                   
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      TextFormField(
+                        controller: _passwordController,
+                        obscureText: _obscurePassword,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.lock_outline, color: Colors.brown),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
+                            },
+                          ),
+                          hintText: 'Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Password tidak boleh kosong';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 30),
+
+                 
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 255, 0, 162),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          bool isLoggedIn = await _login();
+                          if (isLoggedIn) {
+                            Navigator.pushReplacementNamed(context, '/home');
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Email atau password salah')),
+                            );
+                          }
+                        }
+                      },
+                      child: const Text(
+                        'Masuk',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                 
+                 

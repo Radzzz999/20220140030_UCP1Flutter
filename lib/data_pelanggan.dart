@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ucp1/detail_pelanngan.dart';
+import 'package:ucp1/detail_pelanggan.dart';
+
 
 class DataPelangganPage extends StatefulWidget {
   const DataPelangganPage({super.key});

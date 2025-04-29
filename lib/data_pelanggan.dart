@@ -28,4 +28,74 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
     super.dispose();
   }
 
-  
+  @override
+  Widget build(BuildContext context) {
+    final inputDecoration = InputDecoration(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Colors.grey),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    );
+
+    return Scaffold(
+      backgroundColor: const Color(0xFFFDF5F1),
+      appBar: AppBar(
+        backgroundColor: Colors.red[700],
+        title: const Text('Data Pelanggan', style: TextStyle(fontWeight: FontWeight.bold)),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              const Text('Nama Cust', style: TextStyle(fontWeight: FontWeight.bold)),
+              const SizedBox(height: 5),
+              TextFormField(
+                controller: namaController,
+                decoration: inputDecoration.copyWith(hintText: 'Nama Cust'),
+                validator: (value) => value == null || value.isEmpty ? 'Nama tidak boleh kosong' : null,
+              ),
+              const SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: emailController,
+                          decoration: inputDecoration.copyWith(hintText: 'Email'),
+                          validator: (value) => value == null || value.isEmpty ? 'Email tidak boleh kosong' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('No Hp', style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: noHpController,
+                          decoration: inputDecoration.copyWith(hintText: 'No Hp'),
+                          validator: (value) => value == null || value.isEmpty ? 'No HP tidak boleh kosong' : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+
+              
